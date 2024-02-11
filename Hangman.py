@@ -12,8 +12,8 @@ def hangman():
     used_letters = set()
 
     #start game
-    while  lives > 0:
-        print("welcome to Hangman\n")
+    print("Welcome to Hangman\n")
+    while  lives > 0 and len(word_letters) > 0:
         print(f"you have {lives} remaining")
         print(f"you have used {used_letters} in your guess")
 
@@ -32,10 +32,17 @@ def hangman():
                 #user guessed x
                 #remove x from the word_letters
                 word_letters.remove(user_letter)
+            else:
+                lives = lives - 1
+                print("this letter is wrong")
         else:
                 lives = lives - 1
                 print(f"the letter{user_letter} is not correct")
                 print("That is not a valid letter")
+    if lives == 0:
+        print(f"Game Over. The word was: {word}")
+    else:
+        print("You Win!")
 
 
 
